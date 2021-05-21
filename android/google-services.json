@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "494833344023",
+    "firebase_url": "https://behandlerbasenv2.firebaseio.com",
+    "project_id": "behandlerbasenv2",
+    "storage_bucket": "behandlerbasenv2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494833344023:android:5fa293d2183a3a54e80652",
+        "android_client_info": {
+          "package_name": "cbs.dev.bengin.treaterandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494833344023-pg17baodrebd3snq8hfnna05tumkeskk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs42YGAfhmRHQlvcbAxkwMcqYqYmkWXZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494833344023-pg17baodrebd3snq8hfnna05tumkeskk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "494833344023-05kqosrugf1tda1nncpna5n51h3ua3fe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "cbs.dev.bengin.TreaterBus.Treater-for-Business"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494833344023:android:f78e31426adca398e80652",
+        "android_client_info": {
+          "package_name": "com.example.treaterandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494833344023-pg17baodrebd3snq8hfnna05tumkeskk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs42YGAfhmRHQlvcbAxkwMcqYqYmkWXZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494833344023-pg17baodrebd3snq8hfnna05tumkeskk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "494833344023-05kqosrugf1tda1nncpna5n51h3ua3fe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "cbs.dev.bengin.TreaterBus.Treater-for-Business"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494833344023:android:0bb2830b28eb29efe80652",
+        "android_client_info": {
+          "package_name": "treater.business"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494833344023-pg17baodrebd3snq8hfnna05tumkeskk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs42YGAfhmRHQlvcbAxkwMcqYqYmkWXZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494833344023-pg17baodrebd3snq8hfnna05tumkeskk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "494833344023-05kqosrugf1tda1nncpna5n51h3ua3fe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "cbs.dev.bengin.TreaterBus.Treater-for-Business"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
