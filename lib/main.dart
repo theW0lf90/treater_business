@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:treater_business/authentication_service.dart';
+import 'package:treater_business/company_queries.dart';
 import 'package:treater_business/dashboard.dart';
 import 'package:treater_business/logincontroller.dart';
 import 'package:treater_business/main_screen.dart';
+import 'package:treater_business/main_screen_wrapper.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +27,8 @@ class MyApp extends StatelessWidget {
         StreamProvider(
           create: (context) =>
           context.read<AuthenticationService>().authStateChanges,
-        )
+        ),
+
       ],
       child: MaterialApp(
         title: 'Treater',
@@ -108,9 +111,8 @@ class AuthenticationWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
-
     if (firebaseUser != null) {
-      return MainScreen();
+      return MainScreenWrapper();
     } else {
        return LoginController();
     }

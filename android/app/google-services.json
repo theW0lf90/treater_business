@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:494833344023:android:5fa293d2183a3a54e80652",
         "android_client_info": {
-          "package_name": "cbs.dev.bengin.treaterandroid"
+          "package_name": "treater.treater_business"
         }
       },
       "oauth_client": [
@@ -46,7 +46,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:494833344023:android:f78e31426adca398e80652",
         "android_client_info": {
-          "package_name": "com.example.treaterandroid"
+          "package_name": "treater.treater_business"
         }
       },
       "oauth_client": [
@@ -80,9 +80,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:494833344023:android:0bb2830b28eb29efe80652",
+        "mobilesdk_app_id": "1:494833344023:android:84d96dc669cdc000e80652",
         "android_client_info": {
-          "package_name": "treater.business"
+          "package_name": "treater.treater_business"
         }
       },
       "oauth_client": [
