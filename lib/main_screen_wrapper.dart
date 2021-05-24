@@ -13,7 +13,7 @@ class MainScreenWrapper extends StatelessWidget {
     var firebaseUser = context.watch<User>();
    // var signedBusiness = CompanyQueries().getSignedBusinessData(firebaseUser.uid)
    // FirebaseAuth.instance.signOut();
-    return FutureProvider<SignedBusiness?>(
+    return FutureProvider<SignedBusiness>(
         initialData: null,
         create: (context) => CompanyQueries().getSignedBusinessData(firebaseUser.uid),
     child: MainScreen());
