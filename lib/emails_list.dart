@@ -5,6 +5,7 @@ import 'package:treater_business/TextfieldDialog.dart';
 import 'package:treater_business/review_model.dart';
 import 'package:provider/provider.dart';
 import 'package:treater_business/sidemenu.dart';
+import 'package:treater_business/responsive.dart';
 
 class EmailScreen extends StatelessWidget {
   const EmailScreen({Key key}) : super(key: key);
@@ -24,18 +25,18 @@ class EmailScreen extends StatelessWidget {
     final reviewList = context.watch<List<Review>>();
 
     return Scaffold(
-      appBar: AppBar(
-        title:
-            Text('Anmeldelser', style: Theme.of(context).textTheme.headline1),
-        backgroundColor: Theme.of(context).backgroundColor,
-        elevation: 0,
+     // appBar: AppBar(
+       //   Text('Anmeldelser', style: Theme.of(context).textTheme.headline1) : SizedBox.shrink(),
+       // backgroundColor: Theme.of(context).backgroundColor,
+        //elevation: 0,
     //    leading: InkWell(
       //      onTap: () {
       //    print('open menu');
       //  },
      //       child: Icon(Icons.menu_outlined)),
-      ),
-      drawer: Drawer(
+     // ),
+
+      drawer: Responsive.isMobile(context) ? SizedBox.shrink() : Drawer(
 
         child: SideMenu()
 
