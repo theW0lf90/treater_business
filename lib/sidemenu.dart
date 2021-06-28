@@ -1,28 +1,52 @@
 import 'package:flutter/material.dart';
 import '';
+import 'signedbusiness_model.dart';
+import 'package:provider/provider.dart';
+
 class SideMenu extends StatelessWidget {
   const SideMenu({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
+    final businessData = context.watch<SignedBusiness>();
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      body: ListView(
-        children: [
-          DrawerHeader(child: Text('Header')),
-          Padding(padding: EdgeInsets.only(top: 10)),
-          Padding(padding: EdgeInsets.symmetric(vertical: 10),
-              child: buildSectionHeader(context, 'Klienter')),
-          Padding(padding: EdgeInsets.only(top: 10)),
-          buildListTile(context, Icon(Icons.email_outlined), '3', 'Anmeldelser'),
-          buildListTile(context, Icon(Icons.description_outlined),'', 'Journal'),
-          buildListTile(context, Icon(Icons.calendar_today_outlined),'', 'Bookinger'),
-          Padding(padding: EdgeInsets.symmetric(vertical: 10),
-              child: buildSectionHeader(context, 'Marketing')),
-          buildListTile(context,Icon(Icons.campaign_outlined), '', 'Kampagner'),
-          buildListTile(context,Icon(Icons.card_membership_outlined), '', 'Loyalitets rabat'),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(color: Theme.of(context).cardColor, borderRadius: BorderRadius.circular(10)),
+
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child:
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          fit: BoxFit.cover, image: NetworkImage(businessData.imgURL)
+
+                        ),
+                      )),
+
+              ),
+              Padding(padding: EdgeInsets.only(top: 10)),
+              Padding(padding: EdgeInsets.symmetric(vertical: 10),
+                  child: buildSectionHeader(context, 'Klienter')),
+              Padding(padding: EdgeInsets.only(top: 10)),
+              buildListTile(context, Icon(Icons.email_outlined), '3', 'Anmeldelser'),
+              buildListTile(context, Icon(Icons.description_outlined),'', 'Journal'),
+              buildListTile(context, Icon(Icons.calendar_today_outlined),'', 'Bookinger'),
+              Padding(padding: EdgeInsets.symmetric(vertical: 10),
+                  child: buildSectionHeader(context, 'Marketing')),
+              buildListTile(context,Icon(Icons.campaign_outlined), '', 'Kampagner'),
+              buildListTile(context,Icon(Icons.card_membership_outlined), '', 'Loyalitets rabat'),
+            ],
+          ),
+        ),
       ),
     );
   }

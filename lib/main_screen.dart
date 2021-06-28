@@ -38,11 +38,11 @@ class MainScreen extends StatelessWidget {
               child: SideMenu(),
             ),
             Expanded(
-              flex: size.width > 1340 ? 3 : 5,
+              flex: size.width > 1340 ? 4 : 5,
               child: ReviewWrapper(companytype: businessData.comptype, linkedUid: businessData.linkedUid),
             ),
             Expanded(
-              flex: size.width > 1340? 8 : 10,
+              flex: size.width > 1340? 7 : 8,
               child: CalendarScreen(),
             ),
 

@@ -31,33 +31,36 @@ class _CalendarScreenState extends State<CalendarScreen> {
     return Scaffold(body:
   //  Container(color: Colors.yellow,
     //    child: Center(child:Text(firebaseUser.email))),
-      TableCalendar(
-        firstDay: DateTime.utc(2021, 05,01),
-        lastDay: DateTime.utc(2025, 05, 01),
-        focusedDay: DateTime.now(),
-        startingDayOfWeek: StartingDayOfWeek.monday,
-        selectedDayPredicate: (day) {
-          return isSameDay(_selectedDay, day);
-        },
-        onDaySelected: (selectedDay, focusedDay) {
-          setState(() {
-            _selectedDay = selectedDay;
-            _focusedDay = focusedDay; // update `_focusedDay` here as well
-          });
-        },
+      Container(
+        constraints: BoxConstraints(maxWidth: 1000),
+        child: TableCalendar(
+          firstDay: DateTime.utc(2021, 01,01),
+          lastDay: DateTime.utc(2025, 05, 01),
+          focusedDay: DateTime.now(),
+          startingDayOfWeek: StartingDayOfWeek.monday,
+          selectedDayPredicate: (day) {
+            return isSameDay(_selectedDay, day);
+          },
+          onDaySelected: (selectedDay, focusedDay) {
+            setState(() {
+              _selectedDay = selectedDay;
+              _focusedDay = focusedDay; // update `_focusedDay` here as well
+            });
+          },
 
-        calendarFormat: _calendarFormat,
-        onFormatChanged: (format) {
-          setState(() {
-            _calendarFormat = format;
-          });
-        },
+          calendarFormat: _calendarFormat,
+          onFormatChanged: (format) {
+            setState(() {
+              _calendarFormat = format;
+            });
+          },
 
-        onPageChanged: (focusedDay) {
-          _focusedDay = focusedDay;
-        },
+          onPageChanged: (focusedDay) {
+            _focusedDay = focusedDay;
+          },
 
-        ),
+          ),
+      ),
     );
   }
 }

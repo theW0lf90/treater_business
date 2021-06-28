@@ -20,7 +20,7 @@ class Company {
 
   Company.fromJson(Map<String, dynamic> parsedJSON)
       : name = parsedJSON['Comp_name'] ?? '',
-        comptype = parsedJSON['Comp_type'] ?? '',
+        comptype =  parsedJSON['Comp_imgURL'] == null? 'physiotherapist' : parsedJSON['Comp_type'] ?? '',
         uid = parsedJSON['Comp_doc_id'] ?? '',
         cvr = parsedJSON['Comp_cvr'] ?? '',
         adresse = parsedJSON['Comp_adr'] ?? '',

@@ -29,7 +29,7 @@ class SignedBusiness {
         verified = parsedJSON['Verified'] ?? false,
         verifiedCvr = parsedJSON['Verified_cvr'] ?? '',
         name = parsedJSON['Comp_name'] ?? '',
-        comptype = parsedJSON['Comp_type'] ?? '',
+        comptype = parsedJSON['Comp_type'] == null ? 'Physiotherapist' : parsedJSON['Comp_type'] ?? '',
         uid = parsedJSON['uid'] ?? '',
         cvr = parsedJSON['Comp_cvr'] ?? '',
         adresse = parsedJSON['Comp_adr'] ?? '',

@@ -125,7 +125,9 @@ class _ContinueWithEmailScreenState extends State<ContinueWithEmailScreen> {
                             ))
                                 .user;
                             if (user != null) {
+                              //TO-DO
                               writeMetaData(user);
+
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(

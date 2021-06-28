@@ -20,7 +20,7 @@ class ReviewWrapper extends StatelessWidget {
  //   var firebaseUser = context.watch<SignedBusiness>();
 
     return StreamProvider<List<Review>>(
-      child: Responsive.isMobile(context)? TabbarMobile() : EmailScreen(),
+      child: EmailScreen(), // Responsive.isMobile(context)? TabbarMobile() : EmailScreen(),
         initialData: [],
         create: (_) => ReviewQueries().streamReviewList(companytype, linkedUid),
         // catchError: (_, Error) => Error.toString(),
