@@ -15,7 +15,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     var businessData = context.watch<SignedBusiness>();
-
+    print(businessData.imgURL);
     return Scaffold(
       body: Responsive(
         mobile: ReviewWrapper(companytype: businessData.comptype, linkedUid: businessData.linkedUid), // EmailScreen(),//CalendarScreen(),

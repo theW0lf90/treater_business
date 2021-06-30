@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:treater_business/signedbusiness_model.dart';
 import 'company_model.dart';
 
@@ -8,33 +9,62 @@ class CompanyQueries {
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
 
-  // Widget build(BuildContext context, String collectionType, String documentId) {
-  //   DocumentReference docRef = _firestore
-  //       .collection('DK')
-  //       .doc('Companies')
-  //       .collection(collectionType)
-  //       .doc(documentId);
-  //   return FutureBuilder<DocumentSnapshot>(
-  //     future: docRef.get(),
-  //     builder:
-  //         (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-  //       if (snapshot.hasError) {
-  //         return Text("Something went wrong");
-  //       }
-  //
-  //       if (snapshot.hasData && !snapshot.data.exists) {
-  //         return Text("Document does not exist");
-  //       }
-  //
-  //       if (snapshot.connectionState == ConnectionState.done) {
-  //         Map<String, dynamic> data = snapshot.data.data();
-  //         return Text("Full Name: ${data['full_name']} ${data['last_name']}");
-  //       }
-  //
-  //       return Text("loading");
-  //     },
-  //   );
-  // }
+
+  //* Position in DK
+  Future<List<Company>> getCountryRank(String collectionType) async {
+    print('entering country rank');
+    var querySnap = await _firestore
+        .collection('DK')
+        .doc('Companies')
+        .collection(collectionType)
+        .where('Comp_acc_rating', isGreaterThan: 1)
+
+    //   .orderBy('Comp_acc_rating', descending: true)
+        .get();
+    var futureList =
+    querySnap.docs.map((snap) => Company.fromJson(snap.data())).toList();
+  //  futureList.forEach((element) {print(element.accRating); });
+   futureList.sort(( a,b) {
+      return a.accRating.compareTo(b.accRating);
+    });
+    //futureList.forEach((element) {print(element.accRating); });
+
+    return futureList.reversed.toList();
+
+  }
+
+ Future<String> getCountryRank2(String collectionType, String uid) async {
+    print('entering country rank2');
+    var querySnap = await _firestore
+        .collection('DK')
+        .doc('Companies')
+        .collection(collectionType)
+        .where('Comp_acc_rating', isGreaterThan: 1)
+
+    //   .orderBy('Comp_acc_rating', descending: true)
+        .get();
+    var futureList =
+    querySnap.docs.map((snap) => Company.fromJson(snap.data())).toList();
+      futureList.forEach((element) {print(element.accRating); });
+    futureList.sort(( a,b) {
+      return a.accRating.compareTo(b.accRating);
+    });
+
+    var position = 0;
+    //*Reverse from ascending to descending
+    futureList = futureList.reversed.toList();
+
+    futureList.forEach((element) {
+      if(element.uid == uid) {
+        var index = futureList.indexOf(element);
+        position = index + 1;
+      };
+    });
+
+    print('my position is $position');
+    return position.toString() + ' / 3900';
+
+  }
 
   Future <SignedBusiness> getSignedBusinessData(String compId) async {
     var snap = await _firestore.collection('SignedBusiness').doc(compId).get();
@@ -46,6 +76,7 @@ class CompanyQueries {
     var snap = await _firestore.collection('DK').doc('Companies').collection(collectionType).doc(compId).get();
   print(snap.data());
     return Company.fromJson(snap.data());
+
 
     return _firestore
         .collection('DK')
@@ -71,6 +102,8 @@ class CompanyQueries {
       //  }
     });
   }
+
+
 
 
 }

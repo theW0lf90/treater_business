@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:treater_business/custom_alert.dart';
 import 'package:treater_business/review_model.dart';
-import 'package:treater_business/company_model.dart';
 
 class ReviewQueries {
   // Company company;
@@ -41,8 +40,6 @@ class ReviewQueries {
     print(futureList.length.toString());
     return futureList;
   }
-
-
 
   Future getSingleReview(
       String collectionType, String userID, String compId) async {

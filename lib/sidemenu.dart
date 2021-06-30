@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '';
 import 'signedbusiness_model.dart';
 import 'package:provider/provider.dart';
 
@@ -10,6 +9,8 @@ class SideMenu extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final businessData = context.watch<SignedBusiness>();
+
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Padding(

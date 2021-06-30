@@ -15,8 +15,9 @@ class Company {
   final String web;
   final String imgURL;
   List<String> services = [];
+  final double accRating;
 
-  Company({this.name, this.comptype, this.uid, this.zip, this.city, this.averageRating, this.reviewCount, this.cvr, this.adresse, this.phone, this.web, this.imgURL, this.services});
+  Company({this.name, this.comptype, this.uid, this.zip, this.city, this.averageRating, this.reviewCount, this.cvr, this.adresse, this.phone, this.web, this.imgURL, this.services, this.accRating});
 
   Company.fromJson(Map<String, dynamic> parsedJSON)
       : name = parsedJSON['Comp_name'] ?? '',
@@ -31,7 +32,9 @@ class Company {
         phone = parsedJSON['Comp_phone'] ?? '',
         web = parsedJSON['Comp_web'] ?? '',
         imgURL = parsedJSON['Comp_imgURL'] == null? '' : parsedJSON['Comp_imgURL'],
-        services = parsedJSON['Comp_Services'] == null? [''] : List.from(parsedJSON['Comp_Services']);//== null? [''] : parsedJSON['Comp_Services'];
+        services = parsedJSON['Comp_Services'] == null? [''] : List.from(parsedJSON['Comp_Services']),
+  accRating = parsedJSON['Comp_acc_rating'] == null ? 0.0 : parsedJSON['Comp_acc_rating'].toDouble();
+  //== null? [''] : parsedJSON['Comp_Services'];
   //
   // factory Company.fromFirestore(DocumentSnapshot doc) {
   //   Map data = doc.data;

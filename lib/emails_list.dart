@@ -14,7 +14,6 @@ class EmailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     showAnswerDialog(Review review, String businessUid) {
       showDialog(
           context: context,
@@ -33,8 +32,9 @@ class EmailScreen extends StatelessWidget {
       );
     }
    // final businessData = context.watch<SignedBusiness>();
-    final businessUser = context.watch<User>();
+    final user = context.watch<User>();
     final reviewList = context.watch<List<Review>>();
+    var businessUser = context.watch<SignedBusiness>();
 
     return Scaffold(
      appBar: AppBar(
@@ -59,7 +59,7 @@ class EmailScreen extends StatelessWidget {
           child: Column(
             children: [
               //TOP HEADER
-          DashboardWidgets(),
+          DashboardWidgets(uid: businessUser.linkedUid),
               // LIST STARTS HERE
               ListView.builder(
                 padding: EdgeInsets.only(top: 10, bottom: 10),
@@ -163,7 +163,7 @@ class EmailScreen extends StatelessWidget {
                                   print('im tapped');
                                   showDialog(
                                       context: context, builder: (context) {
-                                    return  TextFieldDialog(review: reviewList[index], businessUid: businessUser.uid);
+                                    return  TextFieldDialog(review: reviewList[index], businessUid: user.uid);
                                   });
                                   
                                 /*  showModalBottomSheet(
