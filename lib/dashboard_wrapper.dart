@@ -8,22 +8,22 @@ import 'package:treater_business/signedbusiness_model.dart';
 import 'package:treater_business/tabbar_mobile.dart';
 import 'package:treater_business/responsive.dart';
 
-class ReviewWrapper extends StatelessWidget {
-  ReviewWrapper({Key key}) : super(key: key);
-  //final compID;
+class DashboardWrapper extends StatelessWidget {
+  DashboardWrapper({Key key}) : super(key: key);
+
   //final String companytype;
   //final String linkedUid;
 
   @override
   Widget build(BuildContext context) {
     var businessData = context.watch<SignedBusiness>();
-    print('hello from review wrapper' + businessData.linkedUid);
+    print('hello from dashboard wrapper' + businessData.comptype + businessData.linkedUid);
 
-    return StreamProvider<List<Review>>(
-      child: EmailScreen(), // Responsive.isMobile(context)? TabbarMobile() : EmailScreen(),
-        initialData: [],
-        create: (_) => ReviewQueries().streamReviewList(businessData.comptype, businessData.linkedUid),
-        // catchError: (_, Error) => Error.toString(),
-      );
+    return FutureProvider<List<Review>>(
+      child: DashboardWidgets(compType: businessData.comptype ,uid: businessData.linkedUid),
+      initialData: [],
+      create: (_) => ReviewQueries().getReviewList(businessData.comptype, businessData.linkedUid),
+      // catchError: (_, Error) => Error.toString(),
+    );
   }
 }

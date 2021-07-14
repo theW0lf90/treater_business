@@ -34,7 +34,7 @@ class CompanyQueries {
   }
 
  Future<String> getCountryRank2(String collectionType, String uid) async {
-    print('entering country rank2');
+    print('entering country rank2 inputs are $collectionType $uid' );
     var querySnap = await _firestore
         .collection('DK')
         .doc('Companies')
@@ -46,6 +46,7 @@ class CompanyQueries {
     var futureList =
     querySnap.docs.map((snap) => Company.fromJson(snap.data())).toList();
       futureList.forEach((element) {print(element.accRating); });
+
     futureList.sort(( a,b) {
       return a.accRating.compareTo(b.accRating);
     });
@@ -62,9 +63,39 @@ class CompanyQueries {
     });
 
     print('my position is $position');
-    return position.toString() + ' / 3900';
-
+    return position.toString();
   }
+
+  Future<String> getIndustryReviewData(String collectionType) async {
+    print('entering collectiongroup inputs are ' );
+    var querySnap = await _firestore
+        .collectionGroup('ReviewsRoot')
+        .get();
+    var futureList =
+    querySnap.docs.map((snap) => Company.fromJson(snap.data())).toList();
+    futureList.forEach((element) {print(element.accRating); });
+
+    futureList.sort(( a,b) {
+      return a.accRating.compareTo(b.accRating);
+    });
+
+    var position = 0;
+    //*Reverse from ascending to descending
+    futureList = futureList.reversed.toList();
+
+ /*   futureList.forEach((element) {
+      if(element.uid == uid) {
+        var index = futureList.indexOf(element);
+        position = index + 1;
+      };
+    });
+*/
+    print('my position is $position');
+    return position.toString();
+  }
+
+
+
 
   Future <SignedBusiness> getSignedBusinessData(String compId) async {
     var snap = await _firestore.collection('SignedBusiness').doc(compId).get();

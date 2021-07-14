@@ -41,6 +41,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   table_calendar: ^3.0.0
   charts_flutter: ^0.10.0
+  image_picker: ^0.8.1+4
+  firebase_storage: ^9.0.0
 
 dev_dependencies:
   flutter_test:

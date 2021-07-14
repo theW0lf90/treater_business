@@ -48,8 +48,8 @@ class MyApp extends StatelessWidget {
             ),
 
             headline3: TextStyle(
-                color: Colors.black,
-                fontSize: 15, fontWeight: FontWeight.w500
+                color: Colors.black.withOpacity(0.8),
+                fontSize: 13, fontWeight: FontWeight.w400
             ),
             bodyText1 : TextStyle(
                 color: Colors.black,
@@ -82,8 +82,8 @@ class MyApp extends StatelessWidget {
                 fontSize: 18, fontWeight: FontWeight.w500
             ),
             headline3: TextStyle(
-                color: Colors.white,
-                fontSize: 15, fontWeight: FontWeight.w500
+                color: Colors.white.withOpacity(0.8),
+                fontSize: 13, fontWeight: FontWeight.w400
             ),
 
             bodyText1 : TextStyle(

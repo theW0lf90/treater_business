@@ -58,8 +58,6 @@ class EmailScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              //TOP HEADER
-          DashboardWidgets(uid: businessUser.linkedUid),
               // LIST STARTS HERE
               ListView.builder(
                 padding: EdgeInsets.only(top: 10, bottom: 10),

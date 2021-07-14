@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:treater_business/calendar_screen.dart';
+import 'package:treater_business/dashboard.dart';
+import 'package:treater_business/dashboard_widgets.dart';
+import 'package:treater_business/dashboard_wrapper.dart';
 import 'package:treater_business/emails_list.dart';
 import 'package:treater_business/responsive.dart';
 import 'package:treater_business/review_wrapper.dart';
@@ -13,36 +16,38 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
     var businessData = context.watch<SignedBusiness>();
-    print(businessData.imgURL);
+    print('hello from mainscreen wrapper' + businessData.comptype + businessData.linkedUid);
+
     return Scaffold(
       body: Responsive(
-        mobile: ReviewWrapper(companytype: businessData.comptype, linkedUid: businessData.linkedUid), // EmailScreen(),//CalendarScreen(),
+        mobile: DashboardWrapper(),//companytype: businessData.comptype,linkedUid: businessData.linkedUid ),//ReviewWrapper(companytype: businessData.comptype, linkedUid: businessData.linkedUid), // EmailScreen(),//CalendarScreen(),
         tablet: Row(
           children: [
             Expanded(
               flex: 6,
-              child: SideMenu(),
+              child: ReviewWrapper(),//companytype: businessData.comptype, linkedUid: businessData.linkedUid),//SideMenu(),
             ),
             Expanded(
               flex: 9,
-              child: CalendarScreen(),
+              child: DashboardWrapper(),//companytype: businessData.comptype,linkedUid: businessData.linkedUid ),//CalendarScreen(),
             )
           ],
         ),
         desktop: Row(
           children: [
             Expanded(
-              flex: size.width > 1340 ? 2 : 4,
-              child: SideMenu(),
+              flex: size.width > 1340 ? 4 : 5,
+              child: DashboardWrapper()//,companytype: businessData.comptype,linkedUid: businessData.linkedUid ),//SideMenu(),
             ),
             Expanded(
               flex: size.width > 1340 ? 4 : 5,
-              child: ReviewWrapper(companytype: businessData.comptype, linkedUid: businessData.linkedUid),
+              child:  ReviewWrapper(),//companytype: businessData.comptype, linkedUid: businessData.linkedUid),
             ),
             Expanded(
-              flex: size.width > 1340? 7 : 8,
+              flex: size.width > 1340? 4 : 5,
               child: CalendarScreen(),
             ),
 

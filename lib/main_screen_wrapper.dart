@@ -15,6 +15,8 @@ class MainScreenWrapper extends StatelessWidget {
     return FutureProvider<SignedBusiness>(
         initialData: null,
         create: (context) => CompanyQueries().getSignedBusinessData(firebaseUser.uid),
-    child: MainScreen());
+    child: MainScreen(),
+    catchError: (_, error) => error,
+    );
   }
 }
