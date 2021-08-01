@@ -133,8 +133,90 @@ class CompanyQueries {
       //  }
     });
   }
+  Future updateMySkills(User user, List<String> list, String compType, String linkedUid) async {
+
+    //PREPARE seaarchIndexList
+    List<String> searchIndexList = [];
+
+    list.forEach((competence) {
+      String tempString = '';
+      competence.characters.forEach((element) {
+        tempString = tempString.toLowerCase() + element.toLowerCase();
+        print('upload $tempString');
+        searchIndexList.add(tempString);
+      });
+    });
 
 
+    //WRITE TO DATABASE
+    CollectionReference consultantsRef = FirebaseFirestore.instance.collection('SignedBusiness');
+
+    consultantsRef.doc(user.uid).get()
+        .then((DocumentSnapshot documentSnapshot) {
+
+      consultantsRef.doc(user.uid)
+          .update({
+        'Comp_Services': FieldValue.arrayUnion(list),
+        'Service_Search_index': FieldValue.arrayUnion(searchIndexList),
+      });
+
+    });
+
+    FirebaseFirestore.instance.collection('DK').doc('Companies').collection(compType).doc(linkedUid).update({
+      'Comp_Services':  FieldValue.arrayUnion(list),
+      'Service_Search_index': FieldValue.arrayUnion(searchIndexList),
+    }).then((value) => print('image updated at companyRef'))
+        .catchError((onError) => print('failed to update image'));
+  }
+
+  getInfoFromCompanyRef(BuildContext context,String cvr, String compType ) async {
+      CollectionReference companyRef = FirebaseFirestore.instance.collection('DK').doc('Companies').collection(compType);
+      companyRef.where('Comp_cvr', isEqualTo: cvr).get()
+        .then((QuerySnapshot querySnapshot) {
+          querySnapshot.docs.forEach((doc) {
+            print(doc['Comp_name']);
+          });
+        })
+          .catchError((onError) => print('error'));
+    }
+
+
+  writeMetaData(String email, Company company, BuildContext context, String contactEmail,String contactPhone) async {
+    CollectionReference signedBusinessRef = FirebaseFirestore.instance.collection('SignedBusiness');
+
+    signedBusinessRef.doc(company.uid).get()
+        .then((DocumentSnapshot documentSnapshot) {
+
+      if (documentSnapshot.exists) {
+        print('Doc exists');
+      } else {
+        print('is first time user');
+        signedBusinessRef.doc(company.uid)
+            .set({
+        'Linked_uid': company.uid,
+        'Verified': false,
+        'Timestamp': Timestamp.now(),
+        'Contact_email': contactEmail,
+        'Contact_phone': contactPhone,
+          'Email': email,
+          'OnboardingStatus': 'Pending',
+          'isFirstLogin': true,
+        }).then((value) =>  showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return Text(''); //OnBoardingController(isOnBoarding: true);
+            })
+
+          /*   Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => PageControllerOnBoarding(isOnBoarding: true)),
+        ) */
+        );
+
+      }
+    });
+  }
 
 
 }

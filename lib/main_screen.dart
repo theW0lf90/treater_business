@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treater_business/calendarWrapper.dart';
 import 'package:treater_business/calendar_screen.dart';
 import 'package:treater_business/dashboard.dart';
 import 'package:treater_business/dashboard_widgets.dart';
@@ -23,7 +24,7 @@ class MainScreen extends StatelessWidget {
 
     return Scaffold(
       body: Responsive(
-        mobile: DashboardWrapper(),//companytype: businessData.comptype,linkedUid: businessData.linkedUid ),//ReviewWrapper(companytype: businessData.comptype, linkedUid: businessData.linkedUid), // EmailScreen(),//CalendarScreen(),
+        mobile: CalendarWrapper(),//DashboardWrapper(),//companytype: businessData.comptype,linkedUid: businessData.linkedUid ),//ReviewWrapper(companytype: businessData.comptype, linkedUid: businessData.linkedUid), // EmailScreen(),//CalendarScreen(),
         tablet: Row(
           children: [
             Expanded(
@@ -48,7 +49,7 @@ class MainScreen extends StatelessWidget {
             ),
             Expanded(
               flex: size.width > 1340? 4 : 5,
-              child: CalendarScreen(),
+              child: CalendarWrapper(),
             ),
 
           ],

@@ -11,9 +11,6 @@ import 'package:treater_business/responsive.dart';
 class DashboardWrapper extends StatelessWidget {
   DashboardWrapper({Key key}) : super(key: key);
 
-  //final String companytype;
-  //final String linkedUid;
-
   @override
   Widget build(BuildContext context) {
     var businessData = context.watch<SignedBusiness>();

@@ -9,6 +9,7 @@ import 'package:treater_business/dashboard.dart';
 import 'package:treater_business/logincontroller.dart';
 import 'package:treater_business/main_screen.dart';
 import 'package:treater_business/main_screen_wrapper.dart';
+import 'package:treater_business/signedbusiness_model.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,13 @@ class MyApp extends StatelessWidget {
           context.read<AuthenticationService>().authStateChanges,
         ),
 
+    FutureProvider<SignedBusiness>(
+    initialData: null,
+    create: (context) => CompanyQueries().getSignedBusinessData(FirebaseAuth.instance.currentUser.uid),
+    //child: MainScreen(),
+    catchError: (_, error) => error,
+    )
+
       ],
       child: MaterialApp(
         title: 'Treater',
@@ -37,6 +45,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.grey[100],
           primaryColor: Colors.tealAccent[700],
           cardColor: Colors.white,
+          dividerColor: Colors.grey[200],
           textTheme: TextTheme(
             headline1: TextStyle(
                 color: Colors.black,

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
+import 'package:treater_business/calendar_screen.dart';
 import 'package:treater_business/chart_data.dart';
 import 'package:treater_business/company_model.dart';
 import 'package:treater_business/company_queries.dart';
@@ -13,6 +14,7 @@ import 'package:treater_business/review_model.dart';
 import 'package:provider/provider.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:treater_business/review_queries.dart';
+import 'package:treater_business/select_services_screen.dart';
 import 'signedbusiness_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_core/firebase_core.dart' as firebase_core;
@@ -199,6 +201,16 @@ class _DashboardWidgetsState extends State<DashboardWidgets> {
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0,
         title: Text('Dashboard'),
+        leading: InkWell(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                builder: (context) => CalendarScreen())
+                );
+          } ,
+          child: Icon(Icons.chevron_right),
+        ),
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
@@ -259,7 +271,13 @@ class _DashboardWidgetsState extends State<DashboardWidgets> {
               borderRadius: BorderRadius.circular(10),
               //      side: BorderSide(color: Theme.of(context).primaryColor)
             ),
-            onPressed: () {},
+            onPressed: () async {
+              showDialog(
+                  context: context, builder: (context) {
+                return SelectServices(compType: businessData.comptype, linkedUid: businessData.linkedUid);
+              });
+
+            },
             label: Text('Tilføj '),
             icon: Icon(Icons.add)),
                   ],
